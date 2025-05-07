@@ -32,7 +32,7 @@ export default function Home() {
           })}
           href={siteConfig.links.docs}
         >
-          Documentation
+          azerty
         </Link>
         <Link
           isExternal
