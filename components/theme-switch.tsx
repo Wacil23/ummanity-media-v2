@@ -5,18 +5,19 @@ import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { SwitchProps, useSwitch } from "@heroui/switch";
 import { useTheme } from "next-themes";
 import { useIsSSR } from "@react-aria/ssr";
+import { LuSunMedium, LuMoon } from "react-icons/lu";
 import clsx from "clsx";
-
-import { SunFilledIcon, MoonFilledIcon } from "@/components/icons";
 
 export interface ThemeSwitchProps {
   className?: string;
   classNames?: SwitchProps["classNames"];
+  isAbsolute?: boolean;
 }
 
 export const ThemeSwitch: FC<ThemeSwitchProps> = ({
   className,
   classNames,
+  isAbsolute,
 }) => {
   const { theme, setTheme } = useTheme();
   const isSSR = useIsSSR();
@@ -45,6 +46,8 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
           "px-px transition-opacity hover:opacity-80 cursor-pointer",
           className,
           classNames?.base,
+          isAbsolute &&
+            "absolute bottom-5 right-5 bg-gray-200 rounded-full w-10 h-10 p-5"
         ),
       })}
     >
@@ -65,15 +68,21 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
               "pt-px",
               "px-0",
               "mx-0",
+              isAbsolute &&
+                "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2",
             ],
-            classNames?.wrapper,
+            classNames?.wrapper
           ),
         })}
       >
         {!isSelected || isSSR ? (
-          <SunFilledIcon size={22} />
+          <LuSunMedium
+            className={`size-5 ${isAbsolute ? "size-6 text-black" : ""}`}
+          />
         ) : (
-          <MoonFilledIcon size={22} />
+          <LuMoon
+            className={`size-5 ${isAbsolute ? "size-6 text-black" : ""}`}
+          />
         )}
       </div>
     </Component>
