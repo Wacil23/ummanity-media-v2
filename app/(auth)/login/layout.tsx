@@ -2,17 +2,16 @@ import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
 import clsx from "clsx";
 
-import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
-import Image from "next/image";
-import { ThemeSwitch } from "../../../components/theme-switch";
+import { siteMetaConfig } from "@/config/site";
+import { ThemeSwitch } from "@/components/ui/theme/theme-switch";
 
 export const metadata: Metadata = {
   title: {
-    default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
+    default: siteMetaConfig.name,
+    template: `%s - ${siteMetaConfig.name}`,
   },
-  description: siteConfig.description,
+  description: siteMetaConfig.description,
   icons: {
     icon: "/favicon.ico",
   },

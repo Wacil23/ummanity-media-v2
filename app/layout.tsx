@@ -1,20 +1,22 @@
+import "@fortawesome/fontawesome-svg-core/styles.css";
 import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
-import { Link } from "@heroui/link";
 import clsx from "clsx";
+import { config } from "@fortawesome/fontawesome-svg-core";
 
 import { Providers } from "./providers";
 
-import { siteConfig } from "@/config/site";
+import { siteMetaConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
-import { Navbar } from "@/components/navbar";
+
+config.autoAddCss = false;
 
 export const metadata: Metadata = {
   title: {
-    default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
+    default: siteMetaConfig.name,
+    template: `%s - ${siteMetaConfig.name}`,
   },
-  description: siteConfig.description,
+  description: siteMetaConfig.description,
   icons: {
     icon: "/favicon.ico",
   },

@@ -1,16 +1,15 @@
 import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
-import { Link } from "@heroui/link";
 
-import { siteConfig } from "@/config/site";
-import { Navbar } from "@/components/navbar";
+import Sidebar from "@/components/ui/sidebar/Sidebar";
+import { siteMetaConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: {
-    default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
+    default: siteMetaConfig.name,
+    template: `%s - ${siteMetaConfig.name}`,
   },
-  description: siteConfig.description,
+  description: siteMetaConfig.description,
   icons: {
     icon: "/favicon.ico",
   },
@@ -29,22 +28,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div>
-      <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
-        <Navbar />
-        {children}
-      </main>
-      <footer className="w-full flex items-center justify-center py-3">
-        <Link
-          isExternal
-          className="flex items-center gap-1 text-current"
-          href="https://heroui.com?utm_source=next-app-template"
-          title="heroui.com homepage"
-        >
-          <span className="text-default-600">Powered by</span>
-          <p className="text-primary">HeroUI</p>
-        </Link>
-      </footer>
+    <div className="min-h-screen  flex">
+      <Sidebar />
+      <main className="w-[100%] rounded-3xl m-5">{children}</main>
     </div>
   );
 }
